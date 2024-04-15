@@ -126,9 +126,9 @@ namespace OpenGL
         {
             Init();
             InitShaders();
-            CubeSpecular = 3;
+            CubeSpecular = 1;
             CubeSpecularForce = 0.5f;
-            CubeTransparency = 1.0f;
+            CubeTransparency = 1.5f;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -202,7 +202,7 @@ namespace OpenGL
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton2.Checked)
+            if (radioButton3.Checked)
             {
                 CubeSpecular = 3;
                 openGlControl.Invalidate();
