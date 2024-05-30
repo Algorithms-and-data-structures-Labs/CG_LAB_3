@@ -55,6 +55,17 @@ struct STetrahedron
     int MaterialIdx;
 };
 
+struct STetrahedron1
+{
+    STriangle bounds[4];
+    int MaterialIdx;
+};
+struct STetrahedron2
+{
+    STriangle bounds[4];
+    int MaterialIdx;
+};
+
 struct SMaterial 
 {  
     vec3 Color; 
@@ -98,6 +109,8 @@ STriangle Triangles[12];
 SSphere Spheres[2];
 SCube cube;
 STetrahedron tetrahedron;
+STetrahedron tetrahedron1;
+STetrahedron tetrahedron2;
 SMaterial Materials[9];
 SLight uLight;
 SCamera uCamera;
@@ -262,6 +275,51 @@ void initializeDefaultScene (out STriangle triangles[12], out SSphere spheres[2]
 	tetrahedron.bounds[3].v3 = vec3(-2.0, 2.0, 3.0);
 	tetrahedron.bounds[3].MaterialIdx = 3;
 	tetrahedron.MaterialIdx = 3;
+
+	// Левый тетраэдр (tetrahedron1) - сдвигаем ближе к центру на 1 единицу
+tetrahedron1.bounds[0].v1 = vec3(-4.0, 3.0, 2.0);
+tetrahedron1.bounds[0].v2 = vec3(-5.0, 2.0, 1.0);
+tetrahedron1.bounds[0].v3 = vec3(-3.0, 2.0, 1.0);
+tetrahedron1.bounds[0].MaterialIdx = 3;
+
+tetrahedron1.bounds[1].v1 = vec3(-4.0, 3.0, 2.0);
+tetrahedron1.bounds[1].v2 = vec3(-3.0, 2.0, 1.0);
+tetrahedron1.bounds[1].v3 = vec3(-4.0, 2.0, 3.0);
+tetrahedron1.bounds[1].MaterialIdx = 3;
+
+tetrahedron1.bounds[2].v1 = vec3(-4.0, 3.0, 2.0);
+tetrahedron1.bounds[2].v2 = vec3(-4.0, 2.0, 3.0);
+tetrahedron1.bounds[2].v3 = vec3(-5.0, 2.0, 1.0);
+tetrahedron1.bounds[2].MaterialIdx = 3;
+
+tetrahedron1.bounds[3].v1 = vec3(-5.0, 2.0, 1.0);
+tetrahedron1.bounds[3].v2 = vec3(-3.0, 2.0, 1.0);
+tetrahedron1.bounds[3].v3 = vec3(-4.0, 2.0, 3.0);
+tetrahedron1.bounds[3].MaterialIdx = 3;
+tetrahedron1.MaterialIdx = 3;
+
+// Правый тетраэдр (tetrahedron2) - сдвигаем ближе к центру на 1 единицу
+tetrahedron2.bounds[0].v1 = vec3(0.0, 3.0, 2.0);
+tetrahedron2.bounds[0].v2 = vec3(-1.0, 2.0, 1.0);
+tetrahedron2.bounds[0].v3 = vec3(1.0, 2.0, 1.0);
+tetrahedron2.bounds[0].MaterialIdx = 3;
+
+tetrahedron2.bounds[1].v1 = vec3(0.0, 3.0, 2.0);
+tetrahedron2.bounds[1].v2 = vec3(1.0, 2.0, 1.0);
+tetrahedron2.bounds[1].v3 = vec3(0.0, 2.0, 3.0);
+tetrahedron2.bounds[1].MaterialIdx = 3;
+
+tetrahedron2.bounds[2].v1 = vec3(0.0, 3.0, 2.0);
+tetrahedron2.bounds[2].v2 = vec3(0.0, 2.0, 3.0);
+tetrahedron2.bounds[2].v3 = vec3(-1.0, 2.0, 1.0);
+tetrahedron2.bounds[2].MaterialIdx = 3;
+
+tetrahedron2.bounds[3].v1 = vec3(-1.0, 2.0, 1.0);
+tetrahedron2.bounds[3].v2 = vec3(1.0, 2.0, 1.0);
+tetrahedron2.bounds[3].v3 = vec3(0.0, 2.0, 3.0);
+tetrahedron2.bounds[3].MaterialIdx = 3;
+tetrahedron2.MaterialIdx = 3;
+
 
 }
 
@@ -463,6 +521,42 @@ bool Raytrace ( SRay ray, float start, float final, inout SIntersection intersec
 	for(int i = 0; i < 4; i++) 
 	{
 	    STriangle triangle = tetrahedron.bounds[i]; 
+	    if(IntersectTriangle(ray, triangle.v1, triangle.v2, triangle.v3, test) && test < intersect.Time)
+	    {        
+    	    intersect.Time = test;  
+			intersect.Point = ray.Origin + ray.Direction * test;  
+			intersect.Normal =               
+			normalize(cross(triangle.v1 - triangle.v2, triangle.v3 - triangle.v2));
+			SMaterial mat = Materials[8];
+			intersect.Color = mat.Color;    
+			intersect.LightCoeffs = mat.LightCoeffs;
+			intersect.ReflectionCoef = mat.ReflectionCoef;       
+			intersect.RefractionCoef = mat.RefractionCoef;       
+			intersect.MaterialType = mat.MaterialType;       
+			result = true;   
+		} 
+	}
+	for(int i = 0; i < 4; i++) 
+	{
+	    STriangle triangle = tetrahedron1.bounds[i]; 
+	    if(IntersectTriangle(ray, triangle.v1, triangle.v2, triangle.v3, test) && test < intersect.Time)
+	    {        
+    	    intersect.Time = test;  
+			intersect.Point = ray.Origin + ray.Direction * test;  
+			intersect.Normal =               
+			normalize(cross(triangle.v1 - triangle.v2, triangle.v3 - triangle.v2));
+			SMaterial mat = Materials[8];
+			intersect.Color = mat.Color;    
+			intersect.LightCoeffs = mat.LightCoeffs;
+			intersect.ReflectionCoef = mat.ReflectionCoef;       
+			intersect.RefractionCoef = mat.RefractionCoef;       
+			intersect.MaterialType = mat.MaterialType;       
+			result = true;   
+		} 
+	}
+	for(int i = 0; i < 4; i++) 
+	{
+	    STriangle triangle = tetrahedron2.bounds[i]; 
 	    if(IntersectTriangle(ray, triangle.v1, triangle.v2, triangle.v3, test) && test < intersect.Time)
 	    {        
     	    intersect.Time = test;  
