@@ -170,7 +170,7 @@ void initializeDefaultScene (out STriangle triangles[12], out SSphere spheres[2]
 	triangles[8].v2 = vec3(-5.0, -5.0, -8.0);
 	triangles[8].v3 = vec3(5.0, -5.0, -8.0); 
 	triangles[8].MaterialIdx = 4;
-	
+	//                (tetrahedron1) -                            1        
 	triangles[9].v1 = vec3(5.0,-5.0,-8.0);
 	triangles[9].v2 = vec3(5.0, -5.0, 5.0);
 	triangles[9].v3 = vec3(-5.0, -5.0, 5.0); 
@@ -255,72 +255,71 @@ void initializeDefaultScene (out STriangle triangles[12], out SSphere spheres[2]
 	cube.bounds[11].MaterialIdx = 7;
 	cube.MaterialIdx = 7;
 
-	tetrahedron.bounds[0].v1 = vec3(-2.0, 3.0, 2.0);
-	tetrahedron.bounds[0].v2 = vec3(-3.0, 2.0, 1.0);
-	tetrahedron.bounds[0].v3 = vec3(-1.0, 2.0, 1.0);
-	tetrahedron.bounds[0].MaterialIdx = 3;
+	// Центральный тетраэдр
+tetrahedron.bounds[0].v1 = vec3(-2.0, 4.0, 2.0); // Верхняя вершина
+tetrahedron.bounds[0].v2 = vec3(-2.5, 2.0, 1.0); // Левее
+tetrahedron.bounds[0].v3 = vec3(-1.5, 2.0, 1.0); // Правее
+tetrahedron.bounds[0].MaterialIdx = 3;
 
-	tetrahedron.bounds[1].v1 = vec3(-2.0, 3.0, 2.0);
-	tetrahedron.bounds[1].v2 = vec3(-1.0, 2.0, 1.0);
-	tetrahedron.bounds[1].v3 = vec3(-2.0, 2.0, 3.0);
-	tetrahedron.bounds[1].MaterialIdx = 3;
+tetrahedron.bounds[1].v1 = vec3(-2.0, 4.0, 2.0); // Верхняя вершина
+tetrahedron.bounds[1].v2 = vec3(-1.5, 2.0, 1.0); // Правее
+tetrahedron.bounds[1].v3 = vec3(-2.0, 2.0, 3.0); // Левее
+tetrahedron.bounds[1].MaterialIdx = 3;
 
-	tetrahedron.bounds[2].v1 = vec3(-2.0, 3.0, 2.0);
-	tetrahedron.bounds[2].v2 = vec3(-2.0, 2.0, 3.0);
-	tetrahedron.bounds[2].v3 = vec3(-3.0, 2.0, 1.0);
-	tetrahedron.bounds[2].MaterialIdx = 3;
+tetrahedron.bounds[2].v1 = vec3(-2.0, 4.0, 2.0); // Верхняя вершина
+tetrahedron.bounds[2].v2 = vec3(-2.0, 2.0, 3.0); // Левее
+tetrahedron.bounds[2].v3 = vec3(-2.5, 2.0, 1.0); // Левее
+tetrahedron.bounds[2].MaterialIdx = 3;
 
-	tetrahedron.bounds[3].v1 = vec3(-3.0, 2.0, 1.0);
-	tetrahedron.bounds[3].v2 = vec3(-1.0, 2.0, 1.0);
-	tetrahedron.bounds[3].v3 = vec3(-2.0, 2.0, 3.0);
-	tetrahedron.bounds[3].MaterialIdx = 3;
-	tetrahedron.MaterialIdx = 3;
+tetrahedron.bounds[3].v1 = vec3(-2.5, 2.0, 1.0); // Левее
+tetrahedron.bounds[3].v2 = vec3(-1.5, 2.0, 1.0); // Правее
+tetrahedron.bounds[3].v3 = vec3(-2.0, 2.0, 3.0); // Левее
+tetrahedron.bounds[3].MaterialIdx = 3;
+tetrahedron.MaterialIdx = 3;
 
-	// Левый тетраэдр (tetrahedron1) - сдвигаем ближе к центру на 1 единицу
-tetrahedron1.bounds[0].v1 = vec3(-4.0, 3.0, 2.0);
-tetrahedron1.bounds[0].v2 = vec3(-5.0, 2.0, 1.0);
-tetrahedron1.bounds[0].v3 = vec3(-3.0, 2.0, 1.0);
+// Левый тетраэдр (tetrahedron1) - сдвигаем ближе к центру
+tetrahedron1.bounds[0].v1 = vec3(-3.0, 4.0, 2.0); // Верхняя вершина
+tetrahedron1.bounds[0].v2 = vec3(-3.5, 2.0, 1.0); // Левее
+tetrahedron1.bounds[0].v3 = vec3(-2.5, 2.0, 1.0); // Правее
 tetrahedron1.bounds[0].MaterialIdx = 3;
 
-tetrahedron1.bounds[1].v1 = vec3(-4.0, 3.0, 2.0);
-tetrahedron1.bounds[1].v2 = vec3(-3.0, 2.0, 1.0);
-tetrahedron1.bounds[1].v3 = vec3(-4.0, 2.0, 3.0);
+tetrahedron1.bounds[1].v1 = vec3(-3.0, 4.0, 2.0); // Верхняя вершина
+tetrahedron1.bounds[1].v2 = vec3(-2.5, 2.0, 1.0); // Правее
+tetrahedron1.bounds[1].v3 = vec3(-3.0, 2.0, 3.0); // Левее
 tetrahedron1.bounds[1].MaterialIdx = 3;
 
-tetrahedron1.bounds[2].v1 = vec3(-4.0, 3.0, 2.0);
-tetrahedron1.bounds[2].v2 = vec3(-4.0, 2.0, 3.0);
-tetrahedron1.bounds[2].v3 = vec3(-5.0, 2.0, 1.0);
+tetrahedron1.bounds[2].v1 = vec3(-3.0, 4.0, 2.0); // Верхняя вершина
+tetrahedron1.bounds[2].v2 = vec3(-3.0, 2.0, 3.0); // Левее
+tetrahedron1.bounds[2].v3 = vec3(-3.5, 2.0, 1.0); // Левее
 tetrahedron1.bounds[2].MaterialIdx = 3;
 
-tetrahedron1.bounds[3].v1 = vec3(-5.0, 2.0, 1.0);
-tetrahedron1.bounds[3].v2 = vec3(-3.0, 2.0, 1.0);
-tetrahedron1.bounds[3].v3 = vec3(-4.0, 2.0, 3.0);
+tetrahedron1.bounds[3].v1 = vec3(-3.5, 2.0, 1.0); // Левее
+tetrahedron1.bounds[3].v2 = vec3(-2.5, 2.0, 1.0); // Правее
+tetrahedron1.bounds[3].v3 = vec3(-3.0, 2.0, 3.0); // Левее
 tetrahedron1.bounds[3].MaterialIdx = 3;
 tetrahedron1.MaterialIdx = 3;
 
-// Правый тетраэдр (tetrahedron2) - сдвигаем ближе к центру на 1 единицу
-tetrahedron2.bounds[0].v1 = vec3(0.0, 3.0, 2.0);
-tetrahedron2.bounds[0].v2 = vec3(-1.0, 2.0, 1.0);
-tetrahedron2.bounds[0].v3 = vec3(1.0, 2.0, 1.0);
+// Правый тетраэдр (tetrahedron2) - сдвигаем ближе к центру
+tetrahedron2.bounds[0].v1 = vec3(-1.0, 4.0, 2.0); // Верхняя вершина
+tetrahedron2.bounds[0].v2 = vec3(-1.5, 2.0, 1.0); // Левее
+tetrahedron2.bounds[0].v3 = vec3(-0.5, 2.0, 1.0); // Правее
 tetrahedron2.bounds[0].MaterialIdx = 3;
 
-tetrahedron2.bounds[1].v1 = vec3(0.0, 3.0, 2.0);
-tetrahedron2.bounds[1].v2 = vec3(1.0, 2.0, 1.0);
-tetrahedron2.bounds[1].v3 = vec3(0.0, 2.0, 3.0);
+tetrahedron2.bounds[1].v1 = vec3(-1.0, 4.0, 2.0); // Верхняя вершина
+tetrahedron2.bounds[1].v2 = vec3(-0.5, 2.0, 1.0); // Правее
+tetrahedron2.bounds[1].v3 = vec3(-1.0, 2.0, 3.0); // Левее
 tetrahedron2.bounds[1].MaterialIdx = 3;
 
-tetrahedron2.bounds[2].v1 = vec3(0.0, 3.0, 2.0);
-tetrahedron2.bounds[2].v2 = vec3(0.0, 2.0, 3.0);
-tetrahedron2.bounds[2].v3 = vec3(-1.0, 2.0, 1.0);
+tetrahedron2.bounds[2].v1 = vec3(-1.0, 4.0, 2.0); // Верхняя вершина
+tetrahedron2.bounds[2].v2 = vec3(-1.0, 2.0, 3.0); // Левее
+tetrahedron2.bounds[2].v3 = vec3(-1.5, 2.0, 1.0); // Левее
 tetrahedron2.bounds[2].MaterialIdx = 3;
 
-tetrahedron2.bounds[3].v1 = vec3(-1.0, 2.0, 1.0);
-tetrahedron2.bounds[3].v2 = vec3(1.0, 2.0, 1.0);
-tetrahedron2.bounds[3].v3 = vec3(0.0, 2.0, 3.0);
+tetrahedron2.bounds[3].v1 = vec3(-1.5, 2.0, 1.0); // Левее
+tetrahedron2.bounds[3].v2 = vec3(-0.5, 2.0, 1.0); // Правее
+tetrahedron2.bounds[3].v3 = vec3(-1.0, 2.0, 3.0); // Левее
 tetrahedron2.bounds[3].MaterialIdx = 3;
 tetrahedron2.MaterialIdx = 3;
-
-
 }
 
 void initializeDefaultLightMaterials(out SLight light, out SMaterial materials[9]) 
@@ -340,7 +339,7 @@ void initializeDefaultLightMaterials(out SLight light, out SMaterial materials[9
 	materials[1].RefractionCoef = 1.0;  
 	materials[1].MaterialType = DIFFUSE_REFLECTION;
 	
-	materials[2].Color = vec3(1.0, 0.0, 0.0);  
+	materials[2].Color = vec3(1.0, 0.5, 0.0);  
 	materials[2].LightCoeffs = vec4(lightCoefs); 
     materials[2].ReflectionCoef = 0.5;  
 	materials[2].RefractionCoef = 1.0;  
@@ -527,7 +526,7 @@ bool Raytrace ( SRay ray, float start, float final, inout SIntersection intersec
 			intersect.Point = ray.Origin + ray.Direction * test;  
 			intersect.Normal =               
 			normalize(cross(triangle.v1 - triangle.v2, triangle.v3 - triangle.v2));
-			SMaterial mat = Materials[8];
+			SMaterial mat = Materials[2];
 			intersect.Color = mat.Color;    
 			intersect.LightCoeffs = mat.LightCoeffs;
 			intersect.ReflectionCoef = mat.ReflectionCoef;       
@@ -545,7 +544,7 @@ bool Raytrace ( SRay ray, float start, float final, inout SIntersection intersec
 			intersect.Point = ray.Origin + ray.Direction * test;  
 			intersect.Normal =               
 			normalize(cross(triangle.v1 - triangle.v2, triangle.v3 - triangle.v2));
-			SMaterial mat = Materials[8];
+			SMaterial mat = Materials[2];
 			intersect.Color = mat.Color;    
 			intersect.LightCoeffs = mat.LightCoeffs;
 			intersect.ReflectionCoef = mat.ReflectionCoef;       
@@ -563,7 +562,7 @@ bool Raytrace ( SRay ray, float start, float final, inout SIntersection intersec
 			intersect.Point = ray.Origin + ray.Direction * test;  
 			intersect.Normal =               
 			normalize(cross(triangle.v1 - triangle.v2, triangle.v3 - triangle.v2));
-			SMaterial mat = Materials[8];
+			SMaterial mat = Materials[2];
 			intersect.Color = mat.Color;    
 			intersect.LightCoeffs = mat.LightCoeffs;
 			intersect.ReflectionCoef = mat.ReflectionCoef;       
@@ -606,7 +605,7 @@ STracingRay stack[MAX_STACK_SIZE];
 int stackSize = 0;
 bool pushRay(STracingRay secondaryRay)
 {
-	if(stackSize < MAX_STACK_SIZE - 1 && secondaryRay.depth < rayTracingDepth)
+	if(stackSize < MAX_STACK_SIZE - 1 && secondaryRay.depth < 8)
 	{
 		stack[stackSize] = secondaryRay;
 		stackSize++;

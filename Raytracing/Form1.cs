@@ -167,72 +167,20 @@ namespace OpenGL
             openGlControl.Invalidate();
         }
 
-        private void trackBar7_Scroll(object sender, EventArgs e)
+
+        private void label2_Click(object sender, EventArgs e)
         {
-            CubeTransparency = trackBar7.Value / 255.0f;
 
-            float minForce = 1.0f;
-            float maxForce = 2.0f;
-            float valueRange = maxForce - minForce;
-
-            float trackBarValue = trackBar7.Value;
-
-            CubeTransparency = minForce + (valueRange * trackBarValue / trackBar7.Maximum);
-
-            openGlControl.Invalidate();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
-            {
-                CubeSpecular = 1;
-                openGlControl.Invalidate();
-            }
+
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            if (radioButton2.Checked)
-            {
-                CubeSpecular = 2;
-                openGlControl.Invalidate();
-            }
-        }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton3.Checked)
-            {
-                CubeSpecular = 3;
-                openGlControl.Invalidate();
-            }
-        }
-
-        private void trackBar8_Scroll(object sender, EventArgs e)
-        {
-            int minForce = 0;
-            int maxForce = 10;
-            int valueRange = maxForce - minForce;
-
-            int trackBarValue = trackBar8.Value;
-
-            rayTracingDepth = minForce + (valueRange * trackBarValue / trackBar8.Maximum);
-            openGlControl.Invalidate();
-        }
-
-        private void trackBar9_Scroll(object sender, EventArgs e)
-        {
-            float minForce = 0.0f;
-            float maxForce = 1.0f;
-            float valueRange = maxForce - minForce;
-
-            float trackBarValue = trackBar9.Value;
-
-            float cubeSpecularForce = minForce + (valueRange * trackBarValue / trackBar9.Maximum);
-
-            CubeSpecularForce = cubeSpecularForce;
-            openGlControl.Invalidate();
         }
     }
 }
